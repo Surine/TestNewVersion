@@ -18,7 +18,17 @@ public class RfidUtil {
     private static IvrJackService service;
     private static int ret;
     private static IvrJackService.TagBlock result;
-
+    public static final String a1 = "1";
+    public static final String a2 = "2";
+    public static final String a3 = "3";
+    public static final String a4 = "4";
+    public static final String a5 = "5";
+    public static final String a6 = "6";
+    public static final String a7 = "7";
+    public static final String a8 = "8";
+    public static final String a9 = "9";
+    public static final String a0 = "0";
+    public static final String a_ = " ";
     /**
      * 初始化rfid
      * @param context(上下文)
@@ -58,7 +68,8 @@ public class RfidUtil {
         ret = service.selectTag(0,convertBytes(epc,0));
         if (ret == 0) {
             result = new IvrJackService.TagBlock();
-            int ret = service.readTag(getBlock("USER"), convertByte("0"), (byte)18, result);            if (ret == 0) {
+            int ret = service.readTag(getBlock("USER"), convertByte("0"), (byte)4, result);
+            if (ret == 0) {
             } else {
                //读卡失败
             }
@@ -70,16 +81,19 @@ public class RfidUtil {
 
         if(ret == 0 && result.data != null){
             Log.d("CCC","成功"+result.data);
+            StringBuilder builder = new StringBuilder();
+            StringBuilder builder2 = new StringBuilder();
+            for (byte b : result.data) {
+                builder.append(String.format("%X", b));
+               // builder2.append(getAscll(b));
+            }
+
+            return builder.toString();
         }else{
             Log.d("CCC","失败");
+            return "读卡失败";
         }
 
-        StringBuilder builder = new StringBuilder();
-        for (byte b : result.data) {
-            builder.append(String.format("%02X ", b));
-        }
-
-       return builder.toString();
     }
 
     /**
@@ -168,6 +182,34 @@ public class RfidUtil {
             return 3;
         }else {
             return 1;
+        }
+    }
+
+    public static String getAscll(byte a){
+        String b = String.format("%02X ", a);
+        Log.d("CCC",b);
+        if(b.equals("81")){
+            return a1;
+        }else if(b.equals("82")){
+            return a2;
+        }else if(b.equals("83")){
+            return a3;
+        }else if(b.equals("84")){
+            return a4;
+        }else if(b.equals("85")){
+            return a5;
+        }else if(b.equals("86")){
+            return a6;
+        }else if(b.equals("87")){
+            return a7;
+        }else if(b.equals("88")){
+            return a8;
+        }else if(b.equals("89")){
+            return a9;
+        }else if(b.equals("80")){
+            return a0;
+        }else {
+            return a_;
         }
     }
 }

@@ -133,7 +133,7 @@ public class AddNewBookActivity extends AppCompatActivity implements IvrJackAdap
     private void writeInfo(String s) {
         //写卡
         textView6.setText("EPC读取成功，开始写入ISBN信息");
-        String data = Isbn + "0";
+        String data = Isbn + "01"+"0";
         textView6.setText("写入:"+data);
         int bef = 0;
         bef = RfidUtil.write_915(s, data);

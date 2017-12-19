@@ -254,7 +254,7 @@ public class BroActivity extends AppCompatActivity implements IvrJackAdapter {
                               AlertDialog.Builder builder1 = new AlertDialog.Builder(BroActivity.this);
                               builder1.setTitle("书籍信息");
                               builder1.setCancelable(false);
-                              builder1.setMessage("ISBN"+data);
+                              builder1.setMessage("ISBN:"+data);
                               builder1.setNegativeButton("取消借阅", new DialogInterface.OnClickListener() {
                                   @Override
                                   public void onClick(DialogInterface dialog, int which) {
@@ -287,6 +287,7 @@ public class BroActivity extends AppCompatActivity implements IvrJackAdapter {
     private void Bro() {
         //TODO 修改书籍状态，在卡片上和服务器
         //TODO 添加借阅记录
+        //TODO 最后finish
     }
 
     private void writeInfo(String s) {

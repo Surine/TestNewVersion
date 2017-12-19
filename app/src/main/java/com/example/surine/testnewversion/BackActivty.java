@@ -154,7 +154,7 @@ public class BackActivty extends AppCompatActivity implements IvrJackAdapter {
                                 AlertDialog.Builder builder1 = new AlertDialog.Builder(BackActivty.this);
                                 builder1.setTitle("书籍信息");
                                 builder1.setCancelable(false);
-                                builder1.setMessage("ISBN" + data);
+                                builder1.setMessage("ISBN:" + data);
                                 builder1.setNegativeButton("取消还书", new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialog, int which) {
